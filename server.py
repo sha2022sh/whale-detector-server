@@ -74,10 +74,7 @@ def fetch_whale_data(symbol, min_value=100000):
                     "time": datetime.now().isoformat()
                 })
         
-        # 2. جلب Dark Pool (محدود في Polygon المجاني)
-        # في الإصدار المجاني، نستخدم بيانات السعر كبديل
-        
-        # 3. إحصائيات
+        # 2. إحصائيات
         puts = sum(1 for w in result["whales"] if w["type"] == "PUT")
         calls = sum(1 for w in result["whales"] if w["type"] == "CALL")
         total = puts + calls
@@ -167,3 +164,8 @@ def indicator():
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
+# ════════════════════════════════════════════════════════════════
+# 🎯 للـ Render (مهم!)
+# ════════════════════════════════════════════════════════════════
+application = app
